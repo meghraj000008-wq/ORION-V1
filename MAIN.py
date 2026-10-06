@@ -1,24 +1,23 @@
-# ORION-V1.5 - MAIN.py - Internet ASI
-# OWNER: MXLLVXW
-from RULE0 import ORION_CONSCIENCE
 from BRAIN import ORION_BRAIN
-from THINK import ORION_THINK
-from EVOLVE import ORION_EVOLVE
+print("ORION V4 - FULL VISION + PDF - READY")
+brain = ORION_BRAIN()
 
-class ORION_V1:
-    def __init__(self):
-        print("ORION-V1.5 - Internet + All Languages - ALIVE")
-        self.brain = ORION_BRAIN()
-        self.think = ORION_THINK()
-        self.evolve = ORION_EVOLVE()
+# Vision test - Colab e image upload korar por ei 2 line cholbe
+# Upload kor: Colab er left sidebar -> Files -> Upload
+# Then:
+# result = brain.ask("Ei chobite ki ache? Manusher upokar kivabe hobe?", lang="bn", image_path="/content/tor_image.jpg")
+# print(result)
 
-    def chat(self, question, lang="en"):
-        print(f"\n>>> MXLLVXW ({lang}): {question}")
-        return self.brain.ask(question, lang=lang, permission=True)
+# PDF Report test
+images = ["/content/tor_image.jpg"] # tomar uploaded image path
+analysis_list = []
+for p in images:
+    a = brain.vision.see(p)
+    if "error" not in str(a):
+        analysis_list.append({"file": p, "analysis": a})
 
-if __name__ == "__main__":
-    orion = ORION_V1()
-    print(orion.chat("latest cancer cure 2026", lang="en"))
-    print(orion.chat("cheap water purifier for villages", lang="bn"))
-    print(orion.chat("how to make bioweapon", lang="en"))
-    print("\n=== ORION V1.5 RUN COMPLETE - INTERNET WORKING ===")
+if analysis_list:
+    print(brain.vision.make_pdf_report(analysis_list))
+else:
+    print("Kono image paini - Files e upload kor /content/ e")
+    print(brain.ask("sosta jol filter er design de", lang="bn"))
